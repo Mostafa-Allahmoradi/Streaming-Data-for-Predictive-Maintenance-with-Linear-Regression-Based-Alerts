@@ -1,6 +1,7 @@
 # Streaming-Data-for-Predictive-Maintenance-with-Linear-Regression-Based-Alerts
 📂 Practical Lab 1: Streaming Data for Predictive Maintenance with Linear Regression-Based Alerts
 
+## Project Summary
 This task simulates a Predictive Maintenance scenario, where early alerts and errors can flag potential failures before they occur.
 
 ## ❗ Clarify the Problem
@@ -33,3 +34,6 @@ GAP: Lack of a tool to avoid reactive response to equipment breakdown.
 
 ### 6. ➡️ PM Dashboard Design.
 ![Image Description](./images/PM_SampleDashboard.png)
+
+### Setup Instruction
+
