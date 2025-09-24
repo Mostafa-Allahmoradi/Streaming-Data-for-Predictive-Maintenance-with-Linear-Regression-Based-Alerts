@@ -3,11 +3,19 @@
     # This function gets called during initialization (inside init function) to ensure the database is ready.
     
 import psycopg2
+import pandas as pd
 
 class DBManager:
     
-    def __init__(self, db_config, columns):
-        self.db_config = db_config
+    def __init__(self, columns):
+        self.db_config = {
+            "host": "ep-spring-surf-adwzqkg9-pooler.c-2.us-east-1.aws.neon.tech",
+            "database": "neondb",
+            "user": "neondb_owner",
+            "password": "npg_2DdhmHi4GxFp",
+            "port": "5432",
+            "sslmode": "require",
+        }
         self.columns = columns
         self.connection = self._connect()
 
@@ -48,9 +56,12 @@ class DBManager:
                 conn.commit()
 
     def fetch_all(self):
-        print("🔍 Fetching all records from the database...")
+        # print("🔍 Fetching all records from the database...")
+        table_name = "robot_readings"
+        sql_query = f"SELECT * FROM {table_name};"
+
         # Fetches all records from the database.
         with self.connection as conn:
-            with conn.cursor() as cur:
-                cur.execute("SELECT * FROM robot_readings;")
-                return cur.fetchall()
+            df = pd.read_sql_query(sql_query, conn) 
+            print(f"✅ Successfully loaded {len(df)} rows from {table_name} table.")
+        return df

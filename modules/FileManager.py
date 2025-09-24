@@ -19,6 +19,14 @@ class FileManager:
             print(f"❌ Error reading {self.file_path}: {e}")
             return None
         
+    def write_csv(self, output_path, data):
+        """Write data to a CSV file."""
+        try:
+            data.to_csv(output_path, index=False)
+            print(f"✅ Successfully wrote data to {output_path}")
+        except Exception as e:
+            print(f"❌ Error writing to {output_path}: {e}")
+        
     def get_columns(self):
         """Read column names from the CSV file."""
         try:
