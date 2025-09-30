@@ -1,3 +1,43 @@
+# Structure of Repository
+
+.
+├─ .env
+├─ .venv/                     # (local) Python virtual environment
+├─ artifacts/                 # saved models, thresholds, plots, PDF reports
+├─ data/
+│  ├─ raw/
+│  │  ├─ metadata_regen_clean.csv
+│  │  ├─ metadata_wilk_aligned.csv
+│  │  ├─ metadata_wilk_clean.csv
+│  │  └─ RMBR4-2_export_test.csv
+│  ├─ interim/
+│  └─ processed/
+├─ logs/                      # rotating file logs
+├─ reports/                   # generated PDFs/PNGs (also copied to artifacts/)
+├─ DataExtractionAnalysis/
+│  ├─ __init__.py
+│  └─ dataextractionanalysis.py
+├─ DataPreparation/
+│  ├─ __init__.py
+│  └─ datapreparation.py
+├─ ModelSelection/
+│  ├─ __init__.py
+│  └─ modelselection.py
+├─ ModelTraining/
+│  ├─ __init__.py
+│  └─ modeltraining.py
+├─ ModelEvaluationValidation/
+│  ├─ __init__.py
+│  └─ modelevaluationvalidation.py
+├─ TrainedMLModel/
+│  ├─ __init__.py
+│  └─ trainedmlmodel.py
+├─ scripts/
+│  ├─ __init__.py
+│  └─ playback.py
+├─ Orchestrator_main.py       # CLI entry point (main)
+└─ requirements.txt
+
 # Streaming-Data-for-Predictive-Maintenance-with-Linear-Regression-Based-Alerts
 📂 Practical Lab 1: Streaming Data for Predictive Maintenance with Linear Regression-Based Alerts
 
