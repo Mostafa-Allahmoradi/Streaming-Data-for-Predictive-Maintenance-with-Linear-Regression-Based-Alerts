@@ -41,3 +41,11 @@ class FileManager:
     def get_data(self):
         """Return the loaded DataFrame."""
         return self.data
+    
+    def write_plot(self, output_path, fig):
+        """Save a plot to a file."""
+        try:
+            fig.savefig(output_path)
+            print(f"✅ Successfully saved plot to {output_path}")
+        except Exception as e:
+            print(f"❌ Error saving plot to {output_path}: {e}")

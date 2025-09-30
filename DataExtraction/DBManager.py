@@ -16,6 +16,7 @@ class DBManager:
             "port": "5432",
             "sslmode": "require",
         }
+        self.table_name = "robot_readings"
         self.columns = columns
         self.connection = self._connect()
 
@@ -29,13 +30,13 @@ class DBManager:
         """Drop and recreate the robot_readings table from scratch."""
         with self.connection as conn:
             with conn.cursor() as cur:
-                cur.execute("DROP TABLE IF EXISTS robot_readings;")
+                cur.execute(f"DROP TABLE IF EXISTS {self.table_name};")
                 column_defs = ", ".join([f'"{col}" real' for col in self.columns if "Axis" in col])
                 
                 # timestamp TIMESTAMPTZ DEFAULT NOW(),
 
                 cur.execute(f"""
-                    CREATE TABLE robot_readings (
+                    CREATE TABLE {self.table_name} (
                         Id SERIAL PRIMARY KEY,
                         {column_defs},
                         Time varchar(50)
@@ -57,11 +58,10 @@ class DBManager:
 
     def fetch_all(self):
         # print("🔍 Fetching all records from the database...")
-        table_name = "robot_readings"
-        sql_query = f"SELECT * FROM {table_name};"
+        sql_query = f"SELECT * FROM {self.table_name};"
 
         # Fetches all records from the database.
         with self.connection as conn:
             df = pd.read_sql_query(sql_query, conn) 
-            print(f"✅ Successfully loaded {len(df)} rows from {table_name} table.")
+            print(f"✅ Successfully loaded {len(df)} rows from {self.table_name} table.")
         return df
