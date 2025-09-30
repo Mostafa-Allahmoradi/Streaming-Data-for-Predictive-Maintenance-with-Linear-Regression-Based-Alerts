@@ -3,11 +3,6 @@ import pandas as pd
 class DataPrepairer:
     def __init__(self, data):
         self.data = data
-
-    def analyze(self):
-        # Perform some analysis on the data
-        summary = self.data.describe()
-        return summary
     
     def handle_missing_values(self, method='interpolate'):
         missing_report = self.data.isna().sum()
