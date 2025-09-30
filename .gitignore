@@ -1,8 +1,8 @@
 # .venv 
 .venv/
 
-# results
-results
+# report files
+reports/
 
 # data/test_data
 data/test_data
